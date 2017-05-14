@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MailinatorClient.Core.Models
 {
-    public class FetchInboxResult
+    class DeleteEmailResult
     {
-        public ICollection<Message> Messages { get; set; }
+        public string Status { get; set; }
     }
 }

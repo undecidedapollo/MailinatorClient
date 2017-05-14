@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,8 @@ namespace MailinatorClient.Core.Models
         public string Subject { get; set; }
         public int RequestId { get; set; }
         public string From { get; set; }
-        public string OrigFrom { get; set; }
+        [JsonProperty("origfrom")]
+        public string OriginalFrom { get; set; }
         public string To { get; set; }
         public string Id { get; set; }
         public long Time { get; set; }
