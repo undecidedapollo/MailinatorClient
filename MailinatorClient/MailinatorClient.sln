@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailinatorClient.Core", "MailinatorClient.Core\MailinatorClient.Core.csproj", "{A48676AE-33BE-48C1-8F61-78B2B9B791BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailinatorClient.AspNet", "MailinatorClient.AspNet\MailinatorClient.AspNet.csproj", "{95794DF2-8E9F-4BE1-BCDB-F92BB7FE901B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailinatorClient.AspNetCore", "MailinatorClient.AspNetCore\MailinatorClient.AspNetCore.csproj", "{EF45CE92-0B7A-4C6C-81A4-03AC9BF40A90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A48676AE-33BE-48C1-8F61-78B2B9B791BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48676AE-33BE-48C1-8F61-78B2B9B791BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48676AE-33BE-48C1-8F61-78B2B9B791BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95794DF2-8E9F-4BE1-BCDB-F92BB7FE901B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95794DF2-8E9F-4BE1-BCDB-F92BB7FE901B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95794DF2-8E9F-4BE1-BCDB-F92BB7FE901B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95794DF2-8E9F-4BE1-BCDB-F92BB7FE901B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF45CE92-0B7A-4C6C-81A4-03AC9BF40A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF45CE92-0B7A-4C6C-81A4-03AC9BF40A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF45CE92-0B7A-4C6C-81A4-03AC9BF40A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF45CE92-0B7A-4C6C-81A4-03AC9BF40A90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
