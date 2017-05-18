@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace MailinatorClient.Core
 {
-    public class MailinatorClient
+    public class StandardMailinatorClient
     {
         public string ApiKey { get; protected set; }
 
         private static readonly string baseUrl = "https://api.mailinator.com";
 
-        public MailinatorClient(string apiKey)
+        public StandardMailinatorClient(string apiKey)
         {
             this.ApiKey = apiKey ?? throw new ArgumentNullException("ApiKey cannot be null.");
         }
@@ -23,13 +24,22 @@ namespace MailinatorClient.Core
         {
             using(var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{baseUrl}/api/inbox?token={this.ApiKey}&private_domain={usePrivate}&to={inboxName}");
+                var url = $"{baseUrl}/api/inbox?token={this.ApiKey}&private_domain={usePrivate.ToString().ToLower()}&to={inboxName}";
+
+                var response = await client.GetAsync(url);
 
                 response.EnsureSuccessStatusCode();
 
                 var content = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<GetInboxResult>(content);
+                var result = JsonConvert.DeserializeObject<GetInboxResult>(content);
+
+                if(result?.Messages != null && usePrivate)
+                {
+                    result.Messages.ForEach(x => x.IsPrivateMessage = true);
+                }
+
+                return result;
             }
         }
 
@@ -37,7 +47,8 @@ namespace MailinatorClient.Core
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{baseUrl}/api/inbox?token={this.ApiKey}");
+                var url = $"{baseUrl}/api/inbox?token={this.ApiKey}";
+                var response = await client.GetAsync(url);
 
                 response.EnsureSuccessStatusCode();
 
@@ -47,18 +58,30 @@ namespace MailinatorClient.Core
             }
         }
 
-        public virtual async Task<GetMessageResult> GetMessage(string messageId)
+        public virtual async Task<GetMessageResult> GetMessage(string messageId, bool usePrivate = false)
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{baseUrl}/api/email?token={this.ApiKey}&id={messageId}");
+                var response = await client.GetAsync($"{baseUrl}/api/email?token={this.ApiKey}&id={messageId}&private_domain={usePrivate.ToString().ToLower()}");
 
                 response.EnsureSuccessStatusCode();
 
                 var content = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<GetMessageResult>(content);
+                var message = JsonConvert.DeserializeObject<GetMessageResult>(content);
+
+                if(message?.Data != null && usePrivate)
+                {
+                    message.Data.IsPrivateMessage = true;
+                }
+
+                return message;
             }
+        }
+
+        public virtual async Task<GetMessageResult> GetFullMessage(Message message)
+        {
+            return await this.GetMessage(message?.Id, message?.IsPrivateMessage ?? false);
         }
 
         public virtual async Task<GetMessageResult> DeleteMessage(string messageId)

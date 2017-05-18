@@ -16,8 +16,11 @@ namespace MailinatorClient.Core.Models
         public string To { get; set; }
         public string Id { get; set; }
         public long Time { get; set; }
+        [JsonProperty("seconds_ago")]
         public int SecondsAgo { get; set; }
         public IList<MessagePart> Parts { get; set; }
         public Dictionary<string, string> Headers { get; set; }
+
+        public bool IsPrivateMessage { get; set; }
     }
 }

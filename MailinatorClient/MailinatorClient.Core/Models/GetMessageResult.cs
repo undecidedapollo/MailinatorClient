@@ -7,6 +7,5 @@ namespace MailinatorClient.Core.Models
     public class GetMessageResult
     {
         public Message Data { get; set; }
-        public int ApiEmailFetchesLeft { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace MailinatorClient.AspNetCore
             if (app == null) throw new ArgumentNullException($"{nameof(app)} cannot be null.");
             if (apiKey == null) throw new ArgumentNullException($"{nameof(apiKey)} cannot be null.");
 
-            app.AddTransient(x => new Core.MailinatorClient(apiKey));
+            app.AddTransient(x => new StandardMailinatorClient(apiKey));
 
             return app;
         }
