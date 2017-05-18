@@ -2,14 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <Authors>Jonah Nestrick &lt;undecidedapollo&gt;</Authors>
+    <Company>Jonah Nestrick &lt;undecidedapollo&gt;</Company>
+    <Product>Mailinator Client</Product>
+    <Description>A client for the Mailinator API</Description>
+    <Copyright>2017</Copyright>
+    <PackageProjectUrl>https://github.com/undecidedapollo/MailinatorClient</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/undecidedapollo/MailinatorClient/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/undecidedapollo/MailinatorClient.git</RepositoryUrl>
+    <Version>1.0.0-beta</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyOriginatorKeyFile>MailinatorClientKey.pfx</AssemblyOriginatorKeyFile>
+    <DelaySign>True</DelaySign>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\" />
+    <PackageReference Include="NuGet.CommandLine" Version="3.5.0" />
   </ItemGroup>
 
 </Project>
