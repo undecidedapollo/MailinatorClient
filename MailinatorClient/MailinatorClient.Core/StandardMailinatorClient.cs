@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace MailinatorClient.Core
 {
-    public class StandardMailinatorClient
+    public class StandardMailinatorClient : IMailinatorClient
     {
         public string ApiKey { get; protected set; }
 
